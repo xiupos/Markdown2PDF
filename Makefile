@@ -3,10 +3,8 @@ BUILD_DIR = temp
 all: clean $(BUILD_DIR) output.pdf
 
 $(BUILD_DIR):
-	mkdir $(BUILD_DIR)
-	cp -r config/* $(BUILD_DIR)
+	cp -r config $(BUILD_DIR)
 	cp -r src/* $(BUILD_DIR)
-	cp $(BUILD_DIR)/latexmkrc $(BUILD_DIR)/.latexmrc
 
 output.pdf: $(BUILD_DIR)/output.pdf
 	cp $^ $@
