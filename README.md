@@ -1,20 +1,15 @@
 # Markdown2PDF
 
-1. `report.md`を編集して
+1. `main.md`を編集して
 2. `references.bib`を編集して
 3. 使用画像を`./src/img`に入れて
-4. `build.bat`を実行すると
+4. `make`を実行すると
 5. PDFが出来ます
 
 ## 必要な物
 
-- Pandoc <https://pandoc.org/installing.html>
-- pandoc-crossref <https://github.com/lierdakil/pandoc-crossref>
-- LaTeX
-  - uplatex
-  - dvipdfmx
-  - biber
-  - Latexmk
+- Docker
+- docker-compose
 
 ## Markdown形式とLaTeX コマンドの対応
 
