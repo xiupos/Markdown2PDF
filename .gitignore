@@ -5,3 +5,4 @@
 *.ast
 /dest/sample.pdf
 output.pdf
+output-coverless.pdf
