@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  pandoc:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.pandoc
+    user: 1000:1000
+    volumes:
+      - .:/worker
+    working_dir: /worker
+
+  latex:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.latex
+    user: 1000:1000
+    volumes:
+      - .:/worker
+    working_dir: /worker
+
+  python:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.python
+    user: 1000:1000
+    volumes:
+      - .:/worker
+    working_dir: /worker

@@ -1,0 +1,4 @@
+FROM pandoc/core:latest
+
+ARG UID=1000
+USER ${UID}

@@ -4,3 +4,4 @@
 /src/sample.md
 *.ast
 /dest/sample.pdf
+output.pdf
