@@ -3,12 +3,12 @@ LATEXMK = docker-compose build latex && docker-compose run --rm latex latexmk
 LATEXMKFLAGS =
 PYTHON = docker-compose build python && docker-compose run --rm python python
 
-all: output.pdf
+all: output-covered.pdf
 
-output.pdf: cover.pdf latexmk_out.pdf
+output-covered.pdf: cover.pdf output-uncovered.pdf
 	$(PYTHON) merger.py $^ $@
 
-latexmk_out.pdf: pandoc_out.tex
+output-uncovered.pdf: pandoc_out.tex
 	$(LATEXMK) $(LATEXMKFLAGS) template.tex
 	mv template.pdf $@
 

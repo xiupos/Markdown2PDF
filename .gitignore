@@ -4,5 +4,5 @@
 /src/sample.md
 *.ast
 /dest/sample.pdf
-output.pdf
-output-coverless.pdf
+output-covered.pdf
+output-uncovered.pdf

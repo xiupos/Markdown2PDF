@@ -1,26 +1,22 @@
 BUILD_DIR = temp
 
-build: $(BUILD_DIR) output.pdf
+all: clean $(BUILD_DIR) docker-build output-covered.pdf output-uncovered.pdf
+
+output-covered.pdf: $(BUILD_DIR)/output-covered.pdf
+	cp $^ $@
+
+output-uncovered.pdf: $(BUILD_DIR)/output-uncovered.pdf
+	cp $^ $@
+
+$(BUILD_DIR)/output-%.pdf: src/main.md $(BUILD_DIR)
+	cd "$(PWD)/$(BUILD_DIR)" && make
 
 $(BUILD_DIR):
 	cp -r config $(BUILD_DIR)
 	cp -r src/* $(BUILD_DIR)
 
-output.pdf: $(BUILD_DIR)/output.pdf
-	cp $^ $@
-
-$(BUILD_DIR)/output.pdf: src/main.md
-	cd "$(PWD)/$(BUILD_DIR)" && make
-
-output-coverless.pdf: $(BUILD_DIR)/latexmk_out.pdf
-	cp $^ $@
-
 docker-build:
 	cd "$(PWD)/$(BUILD_DIR)" && docker-compose build
 
-all: clean $(BUILD_DIR) docker-build output.pdf
-
-all-coverless: all output-coverless.pdf
-
 clean:
-	rm -rf $(BUILD_DIR) output.pdf output-coverless.pdf
+	rm -rf $(BUILD_DIR) output-covered.pdf output-uncovered.pdf
