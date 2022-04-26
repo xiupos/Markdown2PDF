@@ -1,9 +1,9 @@
 name: Publish Docker image
 
 on:
-  push:
-    paths:
-      - '.config/docker/**'
+  release:
+    types: [published]
+  workflow_dispatch:
 
 jobs:
   push_to_registry_latex:
