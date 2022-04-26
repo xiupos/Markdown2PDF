@@ -1,5 +1,5 @@
 /sample_temp/
-/temp/
+/.temp/
 /sample_build.bat
 /src/sample.md
 *.ast

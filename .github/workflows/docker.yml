@@ -3,7 +3,7 @@ name: Publish Docker image
 on:
   push:
     paths:
-      - 'config/docker/**'
+      - '.config/docker/**'
 
 jobs:
   push_to_registry_latex:
@@ -35,8 +35,8 @@ jobs:
       - name: Build and Push to GitHub Container Registry
         uses: docker/build-push-action@v2
         with:
-          context: config
-          file: config/docker/Dockerfile.latex
+          context: .config
+          file: .config/docker/Dockerfile.latex
           push: true
           platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
@@ -77,8 +77,8 @@ jobs:
       - name: Build and Push to GitHub Container Registry
         uses: docker/build-push-action@v2
         with:
-          context: config
-          file: config/docker/Dockerfile.pandoc
+          context: .config
+          file: .config/docker/Dockerfile.pandoc
           push: true
           platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
@@ -119,8 +119,8 @@ jobs:
       - name: Build and Push to GitHub Container Registry
         uses: docker/build-push-action@v2
         with:
-          context: config
-          file: config/docker/Dockerfile.python
+          context: .config
+          file: .config/docker/Dockerfile.python
           push: true
           platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}

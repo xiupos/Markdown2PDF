@@ -1,4 +1,4 @@
-BUILD_DIR = temp
+BUILD_DIR = .temp
 
 all: clean $(BUILD_DIR) docker-build output-covered.pdf output-uncovered.pdf
 
@@ -12,7 +12,7 @@ $(BUILD_DIR)/output-%.pdf: src/main.md $(BUILD_DIR)
 	cd "$(PWD)/$(BUILD_DIR)" && make
 
 $(BUILD_DIR):
-	cp -r config $(BUILD_DIR)
+	cp -r .config $(BUILD_DIR)
 	cp -r src/* $(BUILD_DIR)
 
 docker-build:
