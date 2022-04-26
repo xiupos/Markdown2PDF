@@ -23,14 +23,11 @@ RUN apk --no-cache add perl wget xz tar fontconfig-dev \
       collection-fontsrecommended collection-langjapanese latexmk \
       luatexbase ctablestack fontspec luaotfload lualatex-math \
       sourcesanspro sourcecodepro \
- && rm -Rf /tmp/src \
- && apk --no-cache del xz tar fontconfig-dev
-
-RUN tlmgr install \
       mhchem \
-      bibtex biber
-
-RUN chmod -R 777 /usr/local/texlive 
+      bibtex biber \
+ && rm -Rf /tmp/src \
+ && apk --no-cache del xz tar fontconfig-dev \
+ && chmod -R 777 /usr/local/texlive 
 
 # relax exported file permission
 ARG UID=1000
