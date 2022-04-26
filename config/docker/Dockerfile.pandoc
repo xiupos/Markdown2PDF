@@ -1,4 +1,5 @@
 FROM pandoc/core:latest
 
+# relax exported file permission
 ARG UID=1000
 USER ${UID}

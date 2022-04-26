@@ -2,27 +2,30 @@ version: "3"
 
 services:
   pandoc:
-    build:
-      context: .
-      dockerfile: ./docker/Dockerfile.pandoc
+    # build:
+    #   context: .
+    #   dockerfile: ./docker/Dockerfile.pandoc
+    image: ghcr.io/xiupos/md2pdf-pandoc
     user: 1000:1000
     volumes:
       - .:/worker
     working_dir: /worker
 
   latex:
-    build:
-      context: .
-      dockerfile: ./docker/Dockerfile.latex
+    # build:
+    #   context: .
+    #   dockerfile: ./docker/Dockerfile.latex
+    image: ghcr.io/xiupos/md2pdf-latex
     user: 1000:1000
     volumes:
       - .:/worker
     working_dir: /worker
 
   python:
-    build:
-      context: .
-      dockerfile: ./docker/Dockerfile.python
+    # build:
+    #   context: .
+    #   dockerfile: ./docker/Dockerfile.python
+    image: ghcr.io/xiupos/md2pdf-python
     user: 1000:1000
     volumes:
       - .:/worker
