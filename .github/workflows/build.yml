@@ -1,0 +1,33 @@
+name: Build Report
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    name: Build reports
+    runs-on: ubuntu-latest
+    # runs-on: self-hosted
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Make all
+      run: |
+        make all
+      working-directory: ./
+
+    - name: Archive report with cover
+      uses: actions/upload-artifact@v2
+      with:
+        name: Report with cover
+        path: ./output-covered.pdf
+
+    - name: Archive reports without cover
+      uses: actions/upload-artifact@v2
+      with:
+        name: Report without cover
+        path: ./output-uncovered.pdf
