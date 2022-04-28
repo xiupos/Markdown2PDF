@@ -20,14 +20,10 @@ jobs:
         make all
       working-directory: ./
 
-    - name: Archive report with cover
+    - name: Archive reports
       uses: actions/upload-artifact@v2
       with:
-        name: Report with cover
-        path: ./output-covered.pdf
-
-    - name: Archive reports without cover
-      uses: actions/upload-artifact@v2
-      with:
-        name: Report without cover
-        path: ./output-uncovered.pdf
+        name: Reports
+        path: |
+          ./output-covered.pdf
+          ./output-uncovered.pdf
