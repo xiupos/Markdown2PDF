@@ -4,5 +4,7 @@
 /src/sample.md
 *.ast
 /dest/sample.pdf
+/reports
+/report
 output-covered.pdf
 output-uncovered.pdf
