@@ -26,5 +26,4 @@ jobs:
       with:
         name: Reports
         path: |
-          ./output-covered.pdf
-          ./output-uncovered.pdf
+          ./reports
