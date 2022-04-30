@@ -1,9 +1,12 @@
+\usepackage{luatexja}
+\usepackage[no-math]{fontspec}
+
 \usepackage[includeheadfoot,top=20truemm,bottom=20truemm, right=25truemm,left=25truemm]{geometry} % 余白を調製
 
 \usepackage{amsmath,amssymb}
 \usepackage{bm}
 \usepackage{ascmac}
-\usepackage[dvipdfmx]{graphicx,color}
+\usepackage{graphicx,color}
 \usepackage{longtable} % 表組みに必要
 \usepackage{booktabs} % 表組みに必要
 \usepackage{subfig} % 図の横並びに必要
@@ -14,8 +17,7 @@
 \usepackage[backend=biber]{biblatex}
 \usepackage{listings}
 \usepackage{framed}
-\usepackage[dvipdfmx]{hyperref}
-\usepackage{pxjahyper} % ハイパーリンクに日本語が含まれる場合に必要
+\usepackage[luatex,unicode]{hyperref} % ハイパーリンクに日本語が含まれる場合に必要
 \hypersetup{% hyperrefのオプションリスト
     colorlinks=true,% カラーリンクを使用
     linkcolor=black,% 内部参照リンクの色
