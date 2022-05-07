@@ -1,6 +1,7 @@
-\title{MarkdownとPandocとLatexmkで楽してレポートを書く}
-\author{d\_etteiu8383}
-<!-- \maketitle -->
+---
+title: MarkdownとPandocとLatexmkで楽してレポートを書く
+author: d\_etteiu8383
+---
 
 こんにちは、\@d_etteiu8383です。この記事はtraP夏のブログリレー9月29日の記事です。
 この記事では私のレポート制作環境(PandocとLatexmkを使ったPDF作成の自動化)の紹介をします。

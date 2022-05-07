@@ -11,9 +11,15 @@ all: output-covered.pdf
 output-covered.pdf: cover.pdf output-uncovered.pdf
 	$(PYTHON) merger.py $^ $@
 
-output-uncovered.pdf: pandoc_out.tex
+output-uncovered.pdf: pandoc_out.tex pandoc_out-title.tex
 	$(LATEXMK) $(LATEXMKFLAGS) template.tex
 	mv template.pdf $@
+
+pandoc_out-title.tex: main.md
+	$(PANDOC) -f markdown+raw_tex \
+		--template=template-title.tex \
+		-o $@ \
+		$^
 
 pandoc_out.tex: main.md
 	$(PANDOC) --filter pandoc-crossref \
