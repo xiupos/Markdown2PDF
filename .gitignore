@@ -1,10 +1,11 @@
 /sample_temp/
 /.temp/
+/.build/
 /sample_build.bat
 /src/sample.md
 *.ast
 /dest/sample.pdf
-/reports
-/report
+/reports/
+/report/
 output-covered.pdf
 output-uncovered.pdf

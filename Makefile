@@ -1,23 +1,34 @@
-BUILD_DIR = .temp
-OUTPUT_DIR = reports
+SRC_DIR = src
+CONFIG_DIR = .config
 
-all: clean $(BUILD_DIR) $(OUTPUT_DIR) $(OUTPUT_DIR)/covered.pdf $(OUTPUT_DIR)/uncovered.pdf
+BUILD_DIR = .build
+BUILD_MK = $(BUILD_DIR)/build.mk
+BUILD_OUT = $(BUILD_DIR)/output-uncovered.pdf
+BUILD_OUT_COVERED = $(BUILD_DIR)/output-covered.pdf
 
-$(OUTPUT_DIR)/covered.pdf: $(BUILD_DIR)/output-covered.pdf
+REPORT_DIR = reports
+REPORT = $(REPORT_DIR)/report.pdf
+REPORT_COVERED = $(REPORT_DIR)/report-covered.pdf
+
+all: clean $(BUILD_DIR) $(REPORT_DIR) $(REPORT)
+
+all-covered: all $(REPORT_COVERED)
+
+$(REPORT_COVERED): $(BUILD_OUT_COVERED)
 	cp $^ $@
 
-$(OUTPUT_DIR)/uncovered.pdf: $(BUILD_DIR)/output-uncovered.pdf
+$(REPORT): $(BUILD_OUT)
 	cp $^ $@
 
-$(BUILD_DIR)/output-%.pdf: src/main.md $(BUILD_DIR)
-	cd "$(PWD)/$(BUILD_DIR)" && make
+$(BUILD_OUT) $(BUILD_OUT_COVERED): $(BUILD_DIR)
+	cd "$(PWD)/$(BUILD_DIR)" && $(MAKE) -f "$(PWD)/$(BUILD_MK)"
 
-$(BUILD_DIR):
-	cp -r .config $(BUILD_DIR)
-	cp -r src/* $(BUILD_DIR)
+$(BUILD_DIR): $(CONFIG_DIR) $(SRC_DIR)
+	cp -r $(CONFIG_DIR) $@
+	cp -r $(SRC_DIR)/* $@
 
-$(OUTPUT_DIR):
-	mkdir $(OUTPUT_DIR)
+$(REPORT_DIR):
+	mkdir $@
 
 clean:
-	rm -rf $(BUILD_DIR) $(OUTPUT_DIR)
+	rm -rf $(BUILD_DIR) $(REPORT_DIR)
