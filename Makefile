@@ -15,7 +15,7 @@ all: clean $(BUILD_DIR) $(REPORT_DIR) $(REPORT)
 
 all-covered: all $(REPORT_COVERED)
 
-pull: $(BUILD) $(BUILD_DOCKERCOMPOSE)
+pull: $(BUILD_DIR) $(BUILD_DOCKERCOMPOSE)
 	cd "$(PWD)/$(BUILD_DIR)" && \
 	docker-compose -f "$(PWD)/$(BUILD_DOCKERCOMPOSE)" pull
 
