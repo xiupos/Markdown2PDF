@@ -1,6 +1,12 @@
 ---
 title: MarkdownとPandocとLatexmkで楽してレポートを書く
 author: d\_etteiu8383
+abstract: |
+  md2pdfは\@d_etteiu8383氏が作成したMarkdown2PDFをxiuposが改良したものです.
+  Makefileへの統一によってLinuxでの使用を想定としており,
+  dockerによる再現性を持ちます.
+  しかし, やっていることについては差異がありませんので,
+  以下の文章を参考にレポート執筆にご活用ください.
 ---
 
 こんにちは、\@d_etteiu8383です。この記事はtraP夏のブログリレー9月29日の記事です。
