@@ -7,3 +7,11 @@
 5. PDFが出来ます
 
 詳しくは [Wiki](https://github.com/xiupos/md2pdf/wiki) を参照.
+
+## テンプレートリポジトリの実装更新を取り入れる
+
+```
+git remote add template https://github.com/xiupos/md2pdf.git
+git fetch template
+git merge template/master --allow-unrelated-histories
+```
