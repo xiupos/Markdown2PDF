@@ -18,6 +18,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: Pull latest images
+      run: |
+        make pull
+      working-directory: ./
     - name: Make all
       run: |
         make all-covered
