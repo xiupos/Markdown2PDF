@@ -2,9 +2,6 @@ name: Build Report
 
 on:
   push:
-    branches:
-      - master
-      - main
     paths:
       - 'src/**'
   pull_request:
