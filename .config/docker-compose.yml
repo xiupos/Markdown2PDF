@@ -6,7 +6,17 @@ services:
     #   context: .
     #   dockerfile: ./docker/Dockerfile.pandoc
     image: ghcr.io/xiupos/md2pdf-pandoc
-    user: "${UID}:${GID}"
+    user: "${LUID}:${LGID}"
+    volumes:
+      - .:/worker
+    working_dir: /worker
+
+  lilypond:
+    # build:
+    #   context: .
+    #   dockerfile: ./docker/Dockerfile.lilypond
+    image: ghcr.io/xiupos/md2pdf-lilypond
+    user: "${LUID}:${LGID}"
     volumes:
       - .:/worker
     working_dir: /worker
@@ -16,7 +26,7 @@ services:
     #   context: .
     #   dockerfile: ./docker/Dockerfile.latex
     image: ghcr.io/xiupos/md2pdf-latex
-    user: "${UID}:${GID}"
+    user: "${LUID}:${LGID}"
     volumes:
       - .:/worker
     working_dir: /worker
@@ -26,7 +36,7 @@ services:
     #   context: .
     #   dockerfile: ./docker/Dockerfile.python
     image: ghcr.io/xiupos/md2pdf-python
-    user: "${UID}:${GID}"
+    user: "${LUID}:${LGID}"
     volumes:
       - .:/worker
     working_dir: /worker
