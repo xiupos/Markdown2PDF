@@ -1,7 +1,10 @@
 FROM jeandeaual/lilypond
 
 USER root
-RUN apt-get update && apt install -y fonts-noto-cjk
+RUN apt-get update && apt install -y \
+    fonts-noto-cjk \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
 ARG UID=1000
 USER ${UID}
