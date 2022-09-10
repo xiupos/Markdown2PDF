@@ -1,28 +1,23 @@
-LUID = $(shell id -u)
-LGID = $(shell id -g)
-
 MAIN_MD = main.md
-
 LATEX = lualatex
 
-PANDOC = LUID=$(LUID) LGID=$(LGID) docker-compose build pandoc && \
-	LUID=$(LUID) LGID=$(LGID) docker-compose run --rm pandoc
+DOCKER = docker
+DOCKER_FLAGS = --rm -v $(PWD):/worker -w /worker -u $(shell id -u):$(shell id -g)
+
+PANDOC = $(DOCKER) run $(DOCKER_FLAGS) ghcr.io/xiupos/md2pdf-pandoc
 PANDOC_CONFIG = pandoc.yml
 PANDOC_OUT_MAIN = pandoc_out-main.tex
 PANDOC_OUT_TITLE = pandoc_out-title.tex
 PANDOC_TEMPLATE_TITLE = template-title.tex
 
-LILYPOND = LUID=$(LUID) LGID=$(LGID) docker-compose build lilypond && \
-	LUID=$(LUID) LGID=$(LGID) docker-compose run --rm lilypond lilypond-book
+LILYPOND = $(DOCKER) run $(DOCKER_FLAGS) ghcr.io/xiupos/md2pdf-lilypond lilypond-book
 LILYPOND_FLAGS = --pdf --latex-program=$(LATEX)
 
-LATEXMK = LUID=$(LUID) LGID=$(LGID) docker-compose build latex && \
-	LUID=$(LUID) LGID=$(LGID) docker-compose run --rm latex latexmk
+LATEXMK = $(DOCKER) run $(DOCKER_FLAGS) ghcr.io/xiupos/md2pdf-latex latexmk
 LATEXMK_FLAGS = -pdflatex=$(LATEX) -pdf
 LATEXMK_FRAME = frame.tex
 
-PYTHON = LUID=$(LUID) LGID=$(LGID) docker-compose build python && \
-	LUID=$(LUID) LGID=$(LGID) docker-compose run --rm python python
+PYTHON = $(DOCKER) run $(DOCKER_FLAGS) ghcr.io/xiupos/md2pdf-python python
 PYTHON_SCRIPT = merger.py
 PYTHON_COVER_PDF = pdf/cover.pdf
 
@@ -39,6 +34,7 @@ $(OUTPUT): $(PANDOC_OUT_MAIN) $(PANDOC_OUT_TITLE)
 	mv $(PANDOC_OUT_MAIN) $(PANDOC_OUT_MAIN:.tex=.lytex)
 	$(LILYPOND) $(LILYPOND_FLAGS) $(PANDOC_OUT_MAIN:.tex=.lytex)
 	$(LATEXMK) $(LATEXMK_FLAGS) $(LATEXMK_FRAME)
+	$(LATEXMK) -c
 	mv $(LATEXMK_FRAME:.tex=.pdf) $@
 
 $(PANDOC_OUT_TITLE): $(MAIN_MD)
