@@ -16,7 +16,7 @@ INPUT = $(SRC_DIR)/main.md
 OUTPUT = $(REPORT_DIR)/report.pdf
 
 DOCKER = docker
-DOCKER_FLAGS = --rm -v $(PWD):/worker -w /worker -u $(shell id -u):$(shell id -g)
+DOCKER_FLAGS = --rm -v $(PWD):/worker -w /worker -u $(shell id -u):$(shell id -g) #--pull always
 PYTHON = $(DOCKER) run $(DOCKER_FLAGS) ghcr.io/xiupos/md2pdf-python python
 PANDOC = $(DOCKER) run $(DOCKER_FLAGS) ghcr.io/xiupos/md2pdf-pandoc
 LILYPOND_BOOK = $(DOCKER) run $(DOCKER_FLAGS) ghcr.io/xiupos/md2pdf-lilypond lilypond-book
@@ -95,7 +95,7 @@ $(LATEXMK_OUT): $(LATEXMK_IN)
 
 # STEP6 @POST
 $(POST_OUT): $(POST_IN)
-	$(POST) $^ $@
+	$(POST) $(INPUT) $(POST_IN) $(POST_OUT)
 
 
 create_dirs: $(BUILD_DIR) $(REPORT_DIR)
