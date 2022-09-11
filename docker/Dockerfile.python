@@ -1,4 +1,4 @@
-FROM python:latest
+FROM python-alpine:latest
 
 RUN python -m pip install --upgrade pip \
  && python -m pip install \
