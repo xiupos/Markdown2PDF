@@ -2,4 +2,5 @@ FROM python:latest
 
 RUN python -m pip install --upgrade pip \
  && python -m pip install \
-      PyPDF2
+      PyPDF2 \
+      python-frontmatter
