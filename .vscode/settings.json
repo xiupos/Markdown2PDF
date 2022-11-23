@@ -1,0 +1,23 @@
+{
+  "markdown.math.enabled": true,
+  "markdown.extension.math.enabled": true,
+  "markdown.extension.katex.macros": {
+    "\\dd": "\\mathrm{d} #1",
+    "\\dv": "\\frac{\\dd #1}{\\dd #2}",
+    "\\pdv": "\\frac{\\partial #1}{\\partial #2}",
+    "\\abs": "\\left| #1 \\right|",
+    "\\norm": "\\left\\| #1 \\right\\|",
+    "\\vb": "\\bm{#1}",
+    "\\va": "\\vb{\\vec{#1}}",
+    "\\vu": "\\vb{\\hat{#1}}",
+    "\\vdot": "\\cdot",
+    "\\cross": "\\times",
+    "\\grad": "\\bm{\\nabla}",
+    "\\div": "\\grad \\vdot",
+    "\\curl": "\\grad \\cross",
+    "\\laplacian": "\\nabla^2",
+    "\\tr": "\\mathrm{tr}",
+    "\\rank": "\\mathrm{rank}",
+    "\\Res": "\\mathrm{Res}"
+  }
+}

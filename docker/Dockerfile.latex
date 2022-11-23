@@ -28,7 +28,8 @@ ENV TLMGR_DEP \
     mhchem \
     bibtex \
     biber \
-    siunitx
+    siunitx \
+    physics
 
 RUN apk --no-cache add ${APK_DEP} \
     && mkdir -p /tmp/src/install-tl-unx \
