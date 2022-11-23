@@ -16,8 +16,14 @@
     "\\div": "\\grad \\vdot",
     "\\curl": "\\grad \\cross",
     "\\laplacian": "\\nabla^2",
-    "\\tr": "\\mathrm{tr}",
-    "\\rank": "\\mathrm{rank}",
-    "\\Res": "\\mathrm{Res}"
+    "\\tr": "\\, \\mathrm{tr} \\,",
+    "\\rank": "\\, \\mathrm{rank} \\,",
+    "\\Res": "\\, \\mathrm{Res} \\,"
+  },
+  "markdownlint.config": {
+    "MD003": false,
+    "MD022": false,
+    "MD024": false,
+    "MD025": false
   }
 }
