@@ -115,7 +115,7 @@ $(POST_OUT): $(POST_IN)
 
 # STEP5b @ZIP
 $(ZIP_OUT): $(ZIP_IN)
-	mkdir $(ZIP_TEMP_DIR)
+	mkdir -p $(ZIP_TEMP_DIR)
 	cp -r $(ZIP_IN) $(ZIP_TEMP_DIR)
 	cd $(ZIP_TEMP_DIR) && $(ZIP) $(ZIP_FLAGS) $(notdir $(ZIP_OUT)) *
 	mv $(ZIP_TEMP_DIR)/$(notdir $(ZIP_OUT)) $(ZIP_OUT)
