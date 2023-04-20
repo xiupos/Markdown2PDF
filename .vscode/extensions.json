@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "yzhang.markdown-all-in-one",
-    "notzaki.pandocciter"
+    "notzaki.pandocciter",
+    "mushan.vscode-paste-image"
   ]
 }
