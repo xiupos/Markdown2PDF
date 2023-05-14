@@ -29,7 +29,9 @@ ENV TLMGR_DEP \
     bibtex \
     biber \
     siunitx \
-    physics
+    physics \
+    markdown \
+    gobble
 
 RUN apk --no-cache add ${APK_DEP} \
     && mkdir -p /tmp/src/install-tl-unx \
@@ -48,7 +50,7 @@ RUN apk --no-cache add ${APK_DEP} \
     && tlmgr install ${TLMGR_DEP} \
     && rm -Rf /tmp/src \
     && apk --no-cache del xz tar fontconfig-dev \
-    && chmod -R 777 /usr/local/texlive 
+    && chmod -R 777 /usr/local/texlive
 
 # relax exported file permission
 ARG UID=1000
