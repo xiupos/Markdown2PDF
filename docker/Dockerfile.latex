@@ -31,7 +31,8 @@ ENV TLMGR_DEP \
     siunitx \
     physics \
     markdown \
-    gobble
+    gobble \
+    mathrsfs
 
 RUN apk --no-cache add ${APK_DEP} \
     && mkdir -p /tmp/src/install-tl-unx \
